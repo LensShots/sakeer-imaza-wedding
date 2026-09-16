@@ -1,0 +1,80 @@
+/* ==========================================================================
+   DESIGN TOKENS
+   Everything visual traces back to a variable here. Change the palette or
+   type scale for the whole site by editing this file only.
+   ========================================================================== */
+
+:root {
+  /* ---- Color: Islamic luxury palette ------------------------------------ */
+  --emerald-deep:  #0A3B2E;   /* primary dark ground */
+  --emerald-mid:   #145C45;   /* secondary ground / gradients */
+  --emerald-line:  #1F7A5C;   /* hairlines on dark ground */
+
+  --gold:          #C6A664;   /* champagne gold — primary accent */
+  --gold-light:    #E8D8AE;   /* pale gold — text on dark, hairlines */
+  --gold-deep:     #9C7C42;   /* pressed / shadow gold */
+
+  --ivory:         #FBF7EE;   /* primary light ground */
+  --ivory-deep:    #F2E9D8;   /* secondary light ground, cards */
+  --ivory-line:    #E3D6B8;   /* hairlines on light ground */
+
+  --ink:           #1E1B14;   /* warm near-black for body text */
+  --ink-soft:      #4A4436;   /* secondary text on light */
+
+  /* ---- Semantic aliases --------------------------------------------------- */
+  --bg-dark:        var(--emerald-deep);
+  --bg-light:        var(--ivory);
+  --accent:          var(--gold);
+  --accent-soft:      var(--gold-light);
+  --text-on-dark:     var(--ivory);
+  --text-on-light:    var(--ink);
+
+  /* ---- Type ---------------------------------------------------------------- */
+  --font-display: "Marcellus", "Cormorant Garamond", serif;   /* headings */
+  --font-serif:   "Cormorant Garamond", "Marcellus", serif;   /* body / quotes */
+  --font-script:  "Tangerine", cursive;                        /* couple's names only */
+
+  --step--1: clamp(0.78rem, 0.74rem + 0.2vw, 0.88rem);
+  --step-0:  clamp(1rem, 0.94rem + 0.3vw, 1.125rem);
+  --step-1:  clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --step-2:  clamp(1.6rem, 1.4rem + 1vw, 2.1rem);
+  --step-3:  clamp(2.1rem, 1.8rem + 1.5vw, 2.9rem);
+  --step-4:  clamp(2.8rem, 2.2rem + 3vw, 4.2rem);
+  --step-5:  clamp(4rem, 3rem + 5vw, 6.5rem);   /* couple names / script */
+
+  /* ---- Spacing (8px rhythm) -------------------------------------------------- */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --space-6: 4.5rem;
+  --space-7: 6rem;
+  --space-8: 8rem;
+
+  /* ---- Shape / elevation ------------------------------------------------------- */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --shadow-soft: 0 10px 40px -12px rgba(10, 59, 46, 0.35);
+  --shadow-deep: 0 25px 60px -15px rgba(10, 20, 15, 0.55);
+
+  /* ---- Motion ------------------------------------------------------------------- */
+  --ease-silk: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.16, 0.84, 0.44, 1);
+  --dur-fast: 320ms;
+  --dur-med:  650ms;
+  --dur-slow: 1200ms;
+
+  /* ---- Layout ------------------------------------------------------------------- */
+  --content-max: 640px;
+  --edge-pad: clamp(1.25rem, 5vw, 2.5rem);
+}
+
+/* Respect reduced-motion preference globally */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 1ms;
+    --dur-med: 1ms;
+    --dur-slow: 1ms;
+  }
+}

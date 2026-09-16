@@ -1,0 +1,866 @@
+/* =========================================================
+   ENVELOPE OPENING SCREEN
+   3 PNG SYSTEM
+   ---------------------------------------------------------
+   envelope_closed.png = closed envelope
+   envelope_flap.png   = moving top flap
+   envelope_open.png   = final open envelope
+   ========================================================= */
+
+.envelope-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* CSS paper background — no image loading */
+  background:
+    radial-gradient(
+      ellipse at center,
+      #f8f1e4 0%,
+      #eee2ce 55%,
+      #d9c5a5 100%
+    );
+
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transition:
+    opacity 900ms ease,
+    visibility 900ms ease;
+}
+
+.envelope-screen.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   DECORATIONS
+   ========================================================= */
+
+.envelope__decor {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.envelope__decor img {
+  position: absolute;
+  display: block;
+
+  height: auto;
+  max-width: none;
+
+  margin: 0;
+  padding: 0;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+
+/* TOP RIGHT BOTANICAL */
+
+.envelope__decor--top {
+  top: -3%;
+  right: -8%;
+  width: min(38vw, 500px);
+  z-index: 3;
+}
+
+/* LEFT FLOWERS */
+
+.envelope__decor--left {
+  left: 3%;
+  top: 40%;
+
+  width: min(23vw, 270px);
+
+  transform: translateY(-50%);
+
+  z-index: 25;
+}
+
+
+/* RIGHT FLOWERS */
+
+.envelope__decor--right {
+  right: 3%;
+  top: 60%;
+
+  width: min(23vw, 270px);
+
+  transform: translateY(-50%);
+
+  z-index: 25;
+}
+
+
+/* BOTTOM LEAF */
+
+.envelope__decor--leaf {
+  left: 50%;
+  bottom: 1%;
+
+  width: min(15vw, 170px);
+
+  transform: translateX(-50%);
+
+  z-index: 3;
+}
+
+
+/* =========================================================
+   MAIN ENVELOPE CONTAINER
+   ========================================================= */
+
+.envelope {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  /*
+     IMPORTANT:
+     This is the SAME large size used by the
+     opening envelope.
+  */
+  width: min(82vw, 920px);
+
+  aspect-ratio: 1152 / 2048;
+
+  /*
+     The PNG itself is portrait.
+     The actual envelope artwork sits inside it.
+  */
+  height: auto;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 10;
+
+  cursor: pointer;
+
+  perspective: 1800px;
+  transform-style: preserve-3d;
+
+  outline: none;
+
+  touch-action: manipulation;
+}
+
+
+/* =========================================================
+   SCENE
+   ========================================================= */
+
+.envelope__scene {
+  position: absolute;
+  inset: 0;
+
+  overflow: visible;
+
+  transform-style: preserve-3d;
+
+  filter:
+    drop-shadow(0 35px 35px rgba(65, 35, 20, 0.22));
+
+  transition:
+    transform 1.2s ease;
+}
+
+
+/* =========================================================
+   ALL PNG LAYERS
+   ========================================================= */
+
+.envelope__art {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  display: block;
+
+  margin: 0;
+  padding: 0;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  backface-visibility: hidden;
+
+  transform-style: preserve-3d;
+}
+
+
+/* =========================================================
+   CLOSED ENVELOPE
+   ========================================================= */
+
+.envelope__closed {
+  z-index: 10;
+
+  opacity: 1;
+
+  transform:
+    translateZ(0)
+    scale(1);
+
+  transition:
+    opacity 650ms ease,
+    transform 900ms ease;
+}
+
+
+/* =========================================================
+   OPEN ENVELOPE
+   ========================================================= */
+
+.envelope__open {
+  z-index: 15;
+
+  opacity: 0;
+
+  transform:
+    translateZ(2px)
+    scale(1);
+
+  transition:
+    opacity 700ms ease,
+    transform 900ms ease;
+}
+
+
+/* =========================================================
+   FLAP
+   ========================================================= */
+
+.envelope__flap {
+  z-index: 30;
+
+  opacity: 0;
+
+  /*
+     Starts exactly over the closed envelope.
+  */
+  transform:
+    translateZ(15px)
+    rotateX(0deg);
+
+  transform-origin: 50% 17%;
+
+  transition:
+    opacity 250ms ease,
+    transform 1300ms cubic-bezier(.22, .61, .36, 1);
+
+  will-change: transform, opacity;
+}
+
+
+/* =========================================================
+   MONOGRAM
+   ========================================================= */
+
+.envelope__monogram {
+  position: absolute;
+
+  left: 50%;
+  top: 25%;
+
+  width: clamp(85px, 10vw, 145px);
+  height: auto;
+
+  transform:
+    translate(-50%, -50%)
+    translateZ(35px);
+
+  z-index: 40;
+
+  pointer-events: none;
+
+  transition:
+    opacity 450ms ease,
+    transform 700ms ease;
+}
+
+.envelope__monogram img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  margin: 0;
+  padding: 0;
+}
+
+
+/* =========================================================
+   WAX SEAL
+   ========================================================= */
+
+.envelope__seal {
+  position: absolute;
+
+  left: 50%;
+  top: 51%;
+
+  /*
+     LARGE SEAL
+     Much bigger than the old version.
+  */
+  width: clamp(110px, 15vw, 195px);
+  aspect-ratio: 1;
+
+  transform:
+    translate(-50%, -50%)
+    translateZ(50px)
+    scale(1);
+
+  z-index: 50;
+
+  cursor: pointer;
+
+  pointer-events: auto;
+
+  filter:
+    drop-shadow(
+      0 10px 12px rgba(60, 25, 20, 0.32)
+    );
+
+  transition:
+    opacity 450ms ease,
+    transform 650ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.envelope__seal img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  margin: 0;
+  padding: 0;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   OPENING INSTRUCTION
+   ========================================================= */
+
+.envelope__hint {
+  position: absolute;
+
+  left: 50%;
+  bottom: -35px;
+
+  margin: 0;
+
+  transform:
+    translateX(-50%)
+    translateZ(20px);
+
+  width: max-content;
+
+  color: #594b40;
+
+  font-family:
+    "Marcellus",
+    Georgia,
+    serif;
+
+  font-size: clamp(11px, 1.05vw, 15px);
+
+  letter-spacing: 0.24em;
+
+  white-space: nowrap;
+
+  text-align: center;
+
+  z-index: 60;
+
+  pointer-events: none;
+
+  opacity: 0.9;
+
+  transition:
+    opacity 400ms ease,
+    transform 500ms ease;
+}
+
+
+/* =========================================================
+   OPEN STATE
+   ========================================================= */
+
+
+/*
+   Seal disappears first.
+*/
+
+.envelope.is-open .envelope__seal {
+  opacity: 0;
+
+  transform:
+    translate(-50%, -50%)
+    translateZ(80px)
+    scale(1.25);
+}
+
+
+/*
+   Monogram disappears with the flap.
+*/
+
+.envelope.is-open .envelope__monogram {
+  opacity: 0;
+
+  transform:
+    translate(-50%, -65%)
+    translateZ(30px);
+}
+
+
+/*
+   Closed envelope fades away.
+*/
+
+.envelope.is-open .envelope__closed {
+  opacity: 0;
+
+  transform:
+    translateZ(-5px)
+    scale(1);
+}
+
+
+/*
+   FLAP PHYSICALLY OPENS.
+
+   The important part:
+   The flap rotates upward around its top hinge.
+*/
+
+.envelope.is-open .envelope__flap {
+  opacity: 1;
+
+  transform:
+    translateZ(25px)
+    rotateX(-155deg);
+}
+
+
+/*
+   Open envelope becomes visible
+   after the flap starts moving.
+*/
+
+.envelope.is-open .envelope__open {
+  opacity: 1;
+
+  transition-delay: 850ms;
+
+  transform:
+    translateZ(3px)
+    scale(1);
+}
+
+
+/*
+   Instruction disappears.
+*/
+
+.envelope.is-open .envelope__hint {
+  opacity: 0;
+
+  transform:
+    translateX(-50%)
+    translateY(10px);
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.envelope__card {
+  position: absolute;
+
+  left: 50%;
+  top: 58%;
+
+  width: 52%;
+
+  transform:
+    translate(-50%, 35%)
+    translateZ(45px);
+
+  opacity: 0;
+
+  z-index: 35;
+
+  pointer-events: none;
+
+  transition:
+    opacity 700ms ease 1100ms,
+    transform 1300ms cubic-bezier(.2, .8, .2, 1) 1100ms;
+}
+
+.envelope__card img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  margin: 0;
+  padding: 0;
+
+  filter:
+    drop-shadow(
+      0 15px 18px rgba(50, 30, 20, 0.20)
+    );
+}
+
+
+/*
+   Card rises after the envelope opens.
+*/
+
+.envelope.is-open .envelope__card {
+  opacity: 1;
+
+  transform:
+    translate(-50%, -15%)
+    translateZ(80px);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .envelope {
+    width: 92vw;
+  }
+
+  .envelope__decor--top {
+    width: 70vw;
+    top: -1%;
+    right: -3%;
+  }
+
+  .envelope__decor--left {
+    width: 27vw;
+    left: 1%;
+    top: 40%;
+  }
+
+  .envelope__decor--right {
+    width: 27vw;
+    right: 1%;
+    top: 60%;
+  }
+
+  .envelope__decor--leaf {
+    width: 19vw;
+    bottom: 1%;
+  }
+
+  .envelope__seal {
+    width: 120px;
+  }
+
+  .envelope__hint {
+    bottom: -58px;
+
+    font-size: 10px;
+
+    letter-spacing: 0.18em;
+  }
+
+  .envelope__card {
+    width: 56%;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .envelope {
+    width: 94vw;
+  }
+
+  .envelope__decor--top {
+    width: 78vw;
+    top: -1%;
+    right: -6%;
+  }
+
+  .envelope__decor--left {
+    width: 30vw;
+    left: 0;
+    top: 39%;
+  }
+
+  .envelope__decor--right {
+    width: 30vw;
+    right: 0;
+    top: 61%;
+  }
+
+  .envelope__decor--leaf {
+    width: 22vw;
+    bottom: 1%;
+  }
+
+  .envelope__seal {
+    width: 110px;
+  }
+
+  .envelope__monogram {
+    width: 92px;
+  }
+
+  .envelope__hint {
+    bottom: -50px;
+
+    font-size: 9px;
+
+    letter-spacing: 0.15em;
+  }
+
+  .envelope__card {
+    width: 60%;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .envelope {
+    width: 96vw;
+  }
+
+  .envelope__seal {
+    width: 100px;
+  }
+
+  .envelope__monogram {
+    width: 82px;
+  }
+
+  .envelope__hint {
+    bottom: -46px;
+
+    font-size: 8px;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .envelope-screen,
+  .envelope__scene,
+  .envelope__closed,
+  .envelope__open,
+  .envelope__flap,
+  .envelope__seal,
+  .envelope__monogram,
+  .envelope__card,
+  .envelope__hint {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+  }
+
+}
+
+
+/* =========================================================
+   SEAL TAP / PRESS EFFECT
+   ========================================================= */
+
+.envelope::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 62%;
+
+  width: 25%;
+  aspect-ratio: 1 / 1;
+
+  transform:
+    translate(-50%, -50%)
+    scale(.72);
+
+  border-radius: 50%;
+
+  border: 2px solid rgba(255, 255, 255, .55);
+
+  box-shadow:
+    0 0 0 0 rgba(255, 255, 255, .35);
+
+  opacity: 0;
+
+  z-index: 30;
+
+  pointer-events: none;
+}
+
+
+.envelope.is-pressing .envelope__art {
+  transform:
+    translate3d(0, 3px, 0)
+    scale(.992);
+
+  filter:
+    brightness(.97)
+    contrast(1.02);
+}
+
+
+.envelope.is-pressing::before {
+  animation: seal-press .65s ease-out forwards;
+}
+
+
+/* =========================================================
+   SEAL PRESS
+   ========================================================= */
+
+@keyframes seal-press {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(.72);
+  }
+
+  25% {
+    opacity: .8;
+
+    transform:
+      translate(-50%, -50%)
+      scale(.82);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1.18);
+
+    box-shadow:
+      0 0 0 14px rgba(255, 255, 255, 0);
+  }
+
+}
+
+
+/* =========================================================
+   OPENING HINT
+   ========================================================= */
+
+.envelope__hint {
+  position: absolute;
+
+  left: 50%;
+  top: 83%;
+
+  transform:
+    translate(-50%, -50%);
+
+  z-index: 20;
+
+  color: #8b6a55;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  letter-spacing: 2px;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+
+  text-shadow:
+    0 1px 2px rgba(255,255,255,.8);
+}
+
+
+/* =========================================================
+/* =========================================================
+   BOTANICAL FALLING FLOWERS / LEAVES
+   ========================================================= */
+
+.botanical-particles {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 6;
+
+  pointer-events: none;
+
+  overflow: visible;
+}
+
+
+/* =========================================================
+   HIDE OPENING TEXT AFTER ENVELOPE OPENS
+   ========================================================= */
+
+.envelope.is-open .envelope__hint,
+.envelope.is-open .envelope__opening-hint {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+

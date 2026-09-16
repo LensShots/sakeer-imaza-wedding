@@ -1,0 +1,989 @@
+
+
+/* ==========================================================================
+   COUNTDOWN
+   ========================================================================== */
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+  max-width: 420px;
+  margin: var(--space-4) auto 0;
+}
+.countdown__unit {
+  padding: var(--space-3) var(--space-1);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-md);
+  background: rgba(198, 166, 100, 0.06);
+  text-align: center;
+}
+.countdown__value {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  color: var(--ivory);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.countdown__label {
+  margin-top: var(--space-1);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+.countdown__until {
+  text-align: center;
+  margin-top: var(--space-3);
+  font-style: italic;
+  color: var(--gold-light);
+  font-size: var(--step--1);
+}
+
+/* ==========================================================================
+   EVENTS (Nikah / Walima cards)
+   ========================================================================== */
+.events {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.event-card {
+  position: relative;
+  padding: var(--space-4);
+  background: var(--ivory);
+  border: 1px solid var(--ivory-line);
+}
+.event-card__name {
+  font-size: var(--step-1);
+  color: var(--emerald-deep);
+}
+.event-card__meta {
+  margin-top: var(--space-1);
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-2);
+}
+.event-card__time { color: var(--gold-deep); font-weight: 600; }
+
+.calendar-link {
+  margin-top: var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+/* ==========================================================================
+   VENUE / MAP
+   ========================================================================== */
+.venue-card {
+  background: var(--ivory);
+  border: 1px solid var(--ivory-line);
+  overflow: hidden;
+}
+.venue-map {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  background: var(--ivory-deep);
+  filter: saturate(0.85) sepia(0.08);
+}
+.venue-map iframe {
+  width: 100%; height: 100%;
+  border: 0;
+  display: block;
+}
+.venue-card__body {
+  padding: var(--space-4);
+}
+.venue-card__name { font-size: var(--step-2); color: var(--emerald-deep); }
+.venue-card__address {
+  margin-top: var(--space-1);
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+}
+.btn-directions {
+  margin-top: var(--space-3);
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  padding: 0.85em 1.8em;
+  font-family: var(--font-serif);
+  font-size: var(--step--1);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-sm);
+  transition: transform var(--dur-fast) var(--ease-soft),
+              background var(--dur-fast) var(--ease-soft),
+              color var(--dur-fast) var(--ease-soft);
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+
+.btn--solid {
+  background: var(--gold);
+  color: var(--emerald-deep);
+  border-color: var(--gold);
+}
+.btn--solid:hover { background: var(--gold-light); }
+
+.btn--outline-dark {
+  color: var(--emerald-deep);
+  border-color: var(--emerald-deep);
+}
+.btn--outline-dark:hover { background: var(--emerald-deep); color: var(--ivory); }
+
+.btn--outline-light {
+  color: var(--gold-light);
+  border-color: var(--gold);
+}
+.btn--outline-light:hover { background: var(--gold); color: var(--emerald-deep); }
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  background: rgba(10, 20, 15, 0.92);
+  padding: var(--space-4);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur-fast) var(--ease-soft), visibility var(--dur-fast);
+}
+.lightbox.is-open { opacity: 1; visibility: visible; }
+.lightbox__frame { max-width: min(92vw, 560px); width: 100%; }
+.lightbox__frame img { width: 100%; border: 1px solid var(--gold); }
+.lightbox__caption {
+  text-align: center;
+  color: var(--gold-light);
+  font-style: italic;
+  margin-top: var(--space-2);
+  font-size: var(--step--1);
+}
+.lightbox__close {
+  position: absolute;
+  top: var(--space-3); right: var(--space-3);
+  color: var(--gold-light);
+  font-size: 1.6rem;
+  line-height: 1;
+  padding: 0.4em;
+}
+
+/* ==========================================================================
+   RSVP
+   ========================================================================== */
+.rsvp-card {
+  padding: var(--space-5) var(--space-4);
+  background: var(--ivory);
+}
+.field {
+  margin-bottom: var(--space-3);
+  text-align: left;
+}
+.field label {
+  display: block;
+  font-size: var(--step--1);
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  margin-bottom: 0.5em;
+}
+.field input[type="text"],
+.field input[type="tel"],
+.field input[type="email"] {
+  width: 100%;
+  padding: 0.85em 1em;
+  background: transparent;
+  border: 1px solid var(--ivory-line);
+  border-bottom: 1.5px solid var(--gold-deep);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--dur-fast) var(--ease-soft);
+}
+.field input:focus { border-color: var(--gold); }
+
+.attend-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+.attend-toggle input { position: absolute; opacity: 0; pointer-events: none; }
+.attend-toggle label {
+  display: block;
+  text-align: center;
+  padding: 0.9em 0.5em;
+  border: 1px solid var(--ivory-line);
+  border-radius: var(--radius-sm);
+  font-size: var(--step--1);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-soft);
+  margin: 0;
+}
+.attend-toggle input:checked + label {
+  border-color: var(--emerald-deep);
+  background: var(--emerald-deep);
+  color: var(--ivory);
+}
+.attend-toggle input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+.guest-stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: 1px solid var(--ivory-line);
+  border-radius: var(--radius-sm);
+  padding: 0.3em 0.6em;
+}
+.guest-stepper button {
+  width: 30px; height: 30px;
+  border: 1px solid var(--gold-deep);
+  border-radius: 50%;
+  font-size: 1rem;
+  color: var(--emerald-deep);
+}
+.guest-stepper button:disabled { opacity: 0.35; cursor: not-allowed; }
+.guest-stepper__value {
+  min-width: 1.6em;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+}
+
+.rsvp-note {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-bottom: var(--space-4);
+}
+
+.rsvp-status {
+  margin-top: var(--space-3);
+  padding: var(--space-3);
+  border: 1px dashed var(--gold-deep);
+  text-align: center;
+  font-style: italic;
+  display: none;
+}
+.rsvp-status.is-visible { display: block; }
+.rsvp-status.is-error { border-color: #a1453a; color: #a1453a; }
+
+/* ==========================================================================
+   MUSIC TOGGLE (floating)
+   ========================================================================== */
+.music-toggle {
+  position: fixed;
+  right: var(--space-3);
+  bottom: var(--space-3);
+  z-index: 60;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--emerald-deep);
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow-soft);
+  transition: opacity var(--dur-med) var(--ease-silk), transform var(--dur-fast);
+}
+.music-toggle:hover { transform: scale(1.06); }
+.music-toggle.is-hidden { opacity: 0; pointer-events: none; transform: scale(0.8); }
+
+.music-toggle__bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+}
+.music-toggle__bars span {
+  width: 3px;
+  background: currentColor;
+  border-radius: 1px;
+  height: 40%;
+}
+.music-toggle.is-playing .music-toggle__bars span {
+  animation: bar-bounce 900ms ease-in-out infinite;
+}
+.music-toggle__bars span:nth-child(1) { animation-delay: 0ms; }
+.music-toggle__bars span:nth-child(2) { animation-delay: 150ms; }
+.music-toggle__bars span:nth-child(3) { animation-delay: 300ms; }
+@keyframes bar-bounce {
+  0%, 100% { height: 30%; }
+  50% { height: 100%; }
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.footer {
+  text-align: center;
+  padding: var(--space-7) var(--edge-pad) var(--space-6);
+}
+.footer__names {
+  font-family: var(--font-script);
+  font-size: var(--step-4);
+  color: var(--ivory);
+}
+.footer__date {
+  margin-top: var(--space-2);
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  font-size: var(--step--1);
+}
+.footer__note {
+  margin-top: var(--space-4);
+  font-style: italic;
+  color: var(--gold-light);
+  opacity: 0.85;
+}
+.footer__contacts {
+  margin-top: var(--space-5);
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+  font-size: var(--step--1);
+}
+.footer__credit {
+  margin-top: var(--space-6);
+  font-size: 0.72rem;
+  color: var(--gold-light);
+  opacity: 0.55;
+  letter-spacing: 0.06em;
+}
+
+/* ==========================================================================
+   LUXURY LAYERED HERO
+   --------------------------------------------------------------------------
+   12 perfectly aligned transparent PNG layers.
+   The Hero stays hidden until main.js adds .is-visible after the envelope
+   opens. Each layer then enters independently for a cinematic reveal.
+   ========================================================================== */
+
+#hero.hero {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+  background: #ead9c0;
+
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+
+  transition: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   GAP DESIGN — FINAL ADJUSTMENT
+   ========================================================= */
+
+/* Hero → Wedding: slightly taller so it touches the hero */
+#hero::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -58px;
+  width: min(96vw, 1050px);
+  height: 230px;
+  transform: translateX(-50%);
+  background: url("../assets/image/gap-botanical-design.png")
+    center / contain no-repeat;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Remove the design from Wedding → Venue */
+#weddingPages::after {
+  content: none !important;
+}
+
+/* Keep the Hero design visible */
+#hero {
+  overflow: visible !important;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  #hero::after {
+    bottom: -45px;
+    width: 100vw;
+    height: 165px;
+  }
+}
+
+/* =======================================================
+   THANK YOU — FULLSCREEN FINAL PAGE
+======================================================= */
+
+.thankyou-section {
+  position: relative;
+
+  width: 100%;
+  height: 100svh;
+  min-height: 100svh;
+
+  overflow: hidden;
+
+  background-color: #ead9c0;
+
+  background-image: url("../assets/image/thankyou-background.png");
+
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+/* =======================================================
+   CONTENT
+======================================================= */
+
+.thankyou-section__inner {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+
+/* =======================================================
+   LENSHOTS AD
+======================================================= */
+
+.lensshots-ad {
+  position: absolute;
+
+  left: 50%;
+  bottom: 4.5%;
+
+  width: min(86%, 620px);
+
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  color: #5a351c;
+}
+
+
+/* =======================================================
+   LOGO
+======================================================= */
+
+.lensshots-ad__logo-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 10px;
+}
+
+.lensshots-ad__logo {
+  display: block;
+
+  width: clamp(70px, 11vw, 115px);
+  height: auto;
+
+  object-fit: contain;
+}
+
+
+/* =======================================================
+   HEADING
+======================================================= */
+
+.lensshots-ad__small {
+  margin: 0 0 6px;
+
+  font-family: "Marcellus", Georgia, serif;
+
+  font-size: clamp(7px, 1vw, 11px);
+
+  line-height: 1.3;
+
+  letter-spacing: 0.16em;
+
+  color: #4b321f;
+
+  text-transform: uppercase;
+}
+
+
+/* =======================================================
+   TITLE
+======================================================= */
+
+.lensshots-ad__title {
+  margin: 0 0 7px;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: clamp(23px, 3.2vw, 38px);
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  color: #75431f;
+}
+
+
+/* =======================================================
+   INVITATION TEXT
+======================================================= */
+
+.lensshots-ad__text {
+  width: 92%;
+
+  margin: 0 0 9px;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: clamp(10px, 1.45vw, 16px);
+
+  line-height: 1.25;
+
+  color: #5d4b3c;
+}
+
+
+/* =======================================================
+   PHOTOGRAPHY TEXT
+======================================================= */
+
+.lensshots-ad__invite {
+  width: 92%;
+
+  margin: 0 0 10px;
+
+  font-family: "Marcellus", Georgia, serif;
+
+  font-size: clamp(7px, 0.95vw, 11px);
+
+  line-height: 1.35;
+
+  letter-spacing: 0.08em;
+
+  color: #59402b;
+
+  text-transform: uppercase;
+}
+
+
+/* =======================================================
+   CONTACT
+======================================================= */
+
+.lensshots-ad__contact {
+  margin: 0 0 7px;
+
+  font-family: "Marcellus", Georgia, serif;
+
+  font-size: clamp(7px, 1vw, 11px);
+
+  line-height: 1.3;
+
+  letter-spacing: 0.15em;
+
+  color: #49301e;
+
+  text-transform: uppercase;
+}
+
+
+/* =======================================================
+   BUTTONS
+======================================================= */
+
+.lensshots-ad__links {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  margin: 0;
+}
+
+
+.lensshots-ad__button {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 105px;
+  min-height: 31px;
+
+  padding: 5px 13px;
+
+  border: 1px solid #c9a45f;
+  border-radius: 30px;
+
+  background: linear-gradient(
+    135deg,
+    #8c5b2d,
+    #5e351b
+  );
+
+  color: #f8ead0;
+
+  font-family: "Marcellus", Georgia, serif;
+
+  font-size: 7px;
+
+  letter-spacing: 0.08em;
+
+  text-decoration: none;
+
+  text-transform: uppercase;
+}
+
+
+/* Hide footer because page should end at contact/buttons */
+
+.lensshots-ad__footer {
+  display: none;
+}
+
+
+/* =======================================================
+   MOBILE
+======================================================= */
+
+@media (max-width: 600px) {
+
+  .lensshots-ad {
+    bottom: 3.5%;
+    width: 88%;
+  }
+
+  .lensshots-ad__logo {
+    width: 78px;
+  }
+
+  .lensshots-ad__logo-wrap {
+    margin-bottom: 7px;
+  }
+
+  .lensshots-ad__small {
+    margin-bottom: 5px;
+    font-size: 6.5px;
+  }
+
+  .lensshots-ad__title {
+    margin-bottom: 6px;
+    font-size: 23px;
+  }
+
+  .lensshots-ad__text {
+    margin-bottom: 7px;
+    font-size: 10px;
+    line-height: 1.25;
+  }
+
+  .lensshots-ad__invite {
+    margin-bottom: 8px;
+    font-size: 6.5px;
+    line-height: 1.35;
+  }
+
+  .lensshots-ad__contact {
+    margin-bottom: 6px;
+    font-size: 6.5px;
+  }
+
+  .lensshots-ad__links {
+    gap: 6px;
+  }
+
+  .lensshots-ad__button {
+    min-width: 95px;
+    min-height: 29px;
+    padding: 5px 10px;
+    font-size: 6.5px;
+  }
+}
+
+/* ==========================================================================
+   LENSHOTS PHOTOGRAPHY CAROUSEL — LARGE / FULL PHOTO
+   ========================================================================== */
+
+.lensshots-gallery {
+  position: relative;
+  width: 100%;
+  height: 285px;
+  overflow: hidden;
+  margin: 4px auto 0;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.lensshots-gallery__track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.lensshots-gallery__item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  /* BIGGER */
+  width: 210px;
+  height: 265px;
+
+  overflow: hidden;
+  border: none;
+  border-radius: 2px;
+  background: transparent;
+
+  transform: translate(-50%, -50%) scale(.72);
+
+  opacity: 0;
+  filter: blur(4px);
+
+  transition:
+    transform .38s cubic-bezier(.22,.61,.36,1),
+    opacity .30s ease,
+    filter .30s ease;
+
+  pointer-events: none;
+  will-change: transform, opacity, filter;
+}
+
+/* SHOW FULL PHOTO — NO CROPPING */
+.lensshots-gallery__item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  /* IMPORTANT */
+  object-fit: contain;
+
+  border: none;
+  border-radius: 0;
+}
+
+/* CENTER */
+.lensshots-gallery__item.is-center {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  filter: blur(0);
+  z-index: 5;
+  pointer-events: auto;
+}
+
+/* LEFT */
+.lensshots-gallery__item.is-left {
+  transform: translate(calc(-50% - 145px), -50%) scale(.68);
+  opacity: .42;
+  filter: blur(4px);
+  z-index: 2;
+}
+
+/* RIGHT */
+.lensshots-gallery__item.is-right {
+  transform: translate(calc(-50% + 145px), -50%) scale(.68);
+  opacity: .42;
+  filter: blur(4px);
+  z-index: 2;
+}
+
+/* HIDDEN LEFT */
+.lensshots-gallery__item.is-hidden-left {
+  transform: translate(calc(-50% - 270px), -50%) scale(.55);
+  opacity: 0;
+  filter: blur(6px);
+  z-index: 1;
+}
+
+/* HIDDEN RIGHT */
+.lensshots-gallery__item.is-hidden-right {
+  transform: translate(calc(-50% + 270px), -50%) scale(.55);
+  opacity: 0;
+  filter: blur(6px);
+  z-index: 1;
+}
+
+
+/* SWIPE HINT */
+
+.lensshots-gallery__hint {
+  margin: 3px 0 8px;
+  font-family: Georgia, serif;
+  font-size: 8px;
+  letter-spacing: 3px;
+  opacity: .65;
+  animation: swipeHint 2.2s ease-in-out infinite;
+}
+
+@keyframes swipeHint {
+  0%,
+  100% {
+    opacity: .4;
+  }
+
+  50% {
+    opacity: .9;
+  }
+}
+
+
+/* SMALL PHONES */
+
+@media (max-width: 380px) {
+
+  .lensshots-gallery {
+    height: 250px;
+  }
+
+  .lensshots-gallery__item {
+    width: 185px;
+    height: 230px;
+  }
+
+  .lensshots-gallery__item.is-left {
+    transform: translate(calc(-50% - 125px), -50%) scale(.65);
+  }
+
+  .lensshots-gallery__item.is-right {
+    transform: translate(calc(-50% + 125px), -50%) scale(.65);
+  }
+}
+
+/* =========================================================
+   MOBILE PERFORMANCE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  
+
+  /* RSVP gets its own clean rendering area. */
+  .rsvp-card {
+    contain: layout paint;
+  }
+
+  /* Keep text inputs responsive while typing. */
+  .rsvp-card input,
+  .rsvp-card textarea {
+    transform: none !important;
+    filter: none !important;
+  }
+
+}
+
+
+#musicToggle:focus,
+#musicToggle:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/* =========================================================
+   HERO — SHOWN ONCE, STAYS STATIC
+   Revealed permanently by the `envelope:opened` handler in
+   main.js. No scroll observer touches #hero anymore, so a
+   single rule set here is enough — no !important stacking
+   needed, but kept defensively in case another module
+   ever adds inline styles.
+   ========================================================= */
+
+#hero.hero,
+#hero.hero.is-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+#hero .hero__layer {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  transform: none !important;
+  filter: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+/* MUSIC BUTTON */
+.music-toggle {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 100000;
+
+  width: 48px;
+  height: 48px;
+
+  border: 1px solid #c9a65c;
+  border-radius: 50%;
+
+  background: rgba(8, 47, 41, 0.92);
+  color: #ead6a4;
+
+  font-family: Georgia, serif;
+  font-size: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+}
+
+.music-toggle.is-playing {
+  background: #c9a65c;
+  color: #082f29;
+}
+
+@media (max-width: 600px) {
+  .music-toggle {
+    right: 14px;
+    bottom: 14px;
+    width: 44px;
+    height: 44px;
+  }
+}

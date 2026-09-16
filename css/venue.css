@@ -1,0 +1,354 @@
+/* ==========================================================================
+   VENUE VIDEO PAGE
+   ========================================================================== */
+
+#venueSection.venue-section {
+  position: relative;
+  width: 100%;
+
+  background: #071f1a;
+  color: #f4ead7;
+
+  overflow: hidden;
+}
+
+/* VIDEO */
+
+#venueSection .venue-section__video {
+  display: block;
+
+  width: 100%;
+  height: 100svh;
+
+  object-fit: contain;
+  object-position: center;
+
+  background: #071f1a;
+}
+
+/* AREA BELOW VIDEO */
+
+#venueSection .venue-section__bottom {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 190px;
+  padding: 35px 20px 45px;
+
+  background:
+    radial-gradient(
+      circle at center top,
+      rgba(201, 166, 92, 0.12),
+      transparent 55%
+    ),
+    linear-gradient(
+      180deg,
+      #071f1a 0%,
+      #0a3028 100%
+    );
+
+  text-align: center;
+}
+
+/* GOLD ORNAMENT */
+
+#venueSection .venue-section__ornament {
+  margin-bottom: 22px;
+
+  color: #d9bd78;
+
+  font-family: Georgia, serif;
+  font-size: 22px;
+  letter-spacing: 7px;
+  line-height: 1;
+
+  opacity: 0;
+  transform: translateY(18px);
+
+  animation: venueOrnamentReveal 1.2s ease forwards;
+  animation-delay: 0.2s;
+}
+
+/* BUTTON */
+
+#venueSection .venue-section__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 180px;
+  min-height: 48px;
+
+  padding: 13px 25px;
+
+  border: 1px solid #d9bd78;
+  border-radius: 0;
+
+  background: transparent;
+  color: #f4ead7;
+
+  font-family: "Marcellus", Georgia, serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  opacity: 0;
+  transform: translateY(18px);
+
+  animation: venueButtonReveal 1.2s ease forwards;
+  animation-delay: 0.45s;
+
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease;
+}
+
+#venueSection .venue-section__button:hover,
+#venueSection .venue-section__button:focus-visible {
+  border-color: #ead6a4;
+  background: #d9bd78;
+  color: #071f1a;
+  outline: none;
+}
+
+/* BOTTOM DECORATIVE LINE */
+
+#venueSection .venue-section__line {
+  position: relative;
+
+  width: 90px;
+  height: 1px;
+
+  margin-top: 28px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #c9a65c,
+    transparent
+  );
+
+  opacity: 0;
+  transform: scaleX(0.3);
+
+  animation: venueLineReveal 1.4s ease forwards;
+  animation-delay: 0.7s;
+}
+
+#venueSection .venue-section__line::before,
+#venueSection .venue-section__line::after {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+
+  width: 5px;
+  height: 5px;
+
+  border: 1px solid #c9a65c;
+
+  background: #071f1a;
+
+  transform: translateY(-50%) rotate(45deg);
+}
+
+#venueSection .venue-section__line::before {
+  left: -3px;
+}
+
+#venueSection .venue-section__line::after {
+  right: -3px;
+}
+
+/* ANIMATIONS */
+
+@keyframes venueOrnamentReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes venueButtonReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes venueLineReveal {
+  from {
+    opacity: 0;
+    transform: scaleX(0.3);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  #venueSection .venue-section__video {
+    height: 100svh;
+  }
+
+  #venueSection .venue-section__bottom {
+    min-height: 165px;
+    padding: 30px 18px 38px;
+  }
+
+  #venueSection .venue-section__ornament {
+    font-size: 19px;
+    letter-spacing: 5px;
+  }
+
+  #venueSection .venue-section__button {
+    min-width: 165px;
+    min-height: 45px;
+    font-size: 9px;
+  }
+
+  #venueSection .venue-section__line {
+    margin-top: 24px;
+  }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  #venueSection .venue-section__ornament,
+  #venueSection .venue-section__button,
+  #venueSection .venue-section__line {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+/* VIEW LOCATION BUTTON ON VIDEO */
+
+#venueSection.venue-section {
+  position: relative;
+}
+
+#venueSection .venue-section__bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 35px;
+  z-index: 5;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+  background: transparent;
+}
+
+#venueSection .venue-section__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 180px;
+  min-height: 48px;
+  padding: 13px 25px;
+
+  border: 1px solid #d9bd78;
+  background: rgba(7, 31, 26, 0.55);
+  color: #f4ead7;
+
+  font-family: "Marcellus", Georgia, serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+#venueSection .venue-section__button:hover {
+  background: #d9bd78;
+  color: #071f1a;
+}
+
+@media (max-width: 600px) {
+  #venueSection .venue-section__bottom {
+    bottom: 25px;
+  }
+}
+
+/* =========================================================
+   VENUE — REMOVE TOP GAP
+   ========================================================= */
+
+#venueSection {
+  display: block;
+  position: relative;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  line-height: 0 !important;
+  background: #000 !important;
+  overflow: hidden;
+}
+
+#venueSection video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+/* =========================================================
+   VENUE — FULLSCREEN VIDEO
+   ========================================================= */
+
+#venueSection {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #062f29;
+  margin: 0;
+  padding: 0;
+}
+
+#venueSection .venue-section__video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+#venueSection .venue-section__bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+}

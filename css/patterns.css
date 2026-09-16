@@ -1,0 +1,112 @@
+/* ==========================================================================
+   ISLAMIC GEOMETRIC MOTIF SYSTEM
+   ----------------------------------------------------------------------
+   A single tessellating 8-point star (khatam) unit, reused at different
+   scales/opacities as the "full immersive" background texture, plus an
+   arch frame and star-divider used to punctuate sections.
+   All patterns are inline SVG data-URIs — no external image requests.
+   ========================================================================== */
+
+/* Tessellated star field — gold linework, low opacity, on dark ground */
+.pattern-field {
+  position: relative;
+  isolation: isolate;
+}
+.pattern-field::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.14;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23C6A664' stroke-width='0.9'%3E%3Cpath d='M60 0 L75 15 L60 30 L45 15 Z'/%3E%3Cpath d='M60 90 L75 105 L60 120 L45 105 Z'/%3E%3Cpath d='M0 60 L15 45 L30 60 L15 75 Z'/%3E%3Cpath d='M90 60 L105 45 L120 60 L105 75 Z'/%3E%3Cpath d='M60 30 L90 60 L60 90 L30 60 Z'/%3E%3Ccircle cx='60' cy='60' r='14'/%3E%3Cpath d='M60 46 L74 60 L60 74 L46 60 Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 140px 140px;
+  background-repeat: repeat;
+}
+.pattern-field.pattern-field--light::before { opacity: 0.10; }
+.pattern-field > * { position: relative; z-index: 1; }
+
+/* Denser variant used behind the hero / envelope for extra immersion */
+.pattern-field--dense::before {
+  background-size: 90px 90px;
+  opacity: 0.16;
+}
+
+/* ---- Ornamental star divider -------------------------------------------- */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin: var(--space-5) 0;
+  color: var(--gold);
+}
+.divider::before,
+.divider::after {
+  content: "";
+  height: 1px;
+  width: clamp(32px, 12vw, 96px);
+  background: linear-gradient(90deg, transparent, currentColor);
+}
+.divider::after { background: linear-gradient(90deg, currentColor, transparent); }
+.divider__mark {
+  font-size: 1.1rem;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+/* ---- Arch frame ----------------------------------------------------------
+   Used around the monogram, portraits, and gallery tiles. A pointed
+   "mihrab" arch traced in gold with a double inner hairline. */
+.arch-frame {
+  position: relative;
+  border-radius: 200px 200px 8px 8px / 260px 260px 8px 8px;
+  border: 1.5px solid var(--gold);
+  padding: var(--space-1);
+  background: rgba(198, 166, 100, 0.05);
+}
+.arch-frame::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid var(--gold-light);
+  border-radius: 190px 190px 4px 4px / 250px 250px 4px 4px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.arch-frame__inner {
+  overflow: hidden;
+  border-radius: 190px 190px 4px 4px / 250px 250px 4px 4px;
+  aspect-ratio: 3 / 4;
+}
+.arch-frame__inner img,
+.arch-frame__inner svg {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- Corner ornaments (used on cards / RSVP panel) ------------------------ */
+.corner-ornament {
+  position: relative;
+}
+.corner-ornament::before,
+.corner-ornament::after,
+.corner-ornament .c-tl,
+.corner-ornament .c-tr {
+  content: "";
+  position: absolute;
+  width: 22px; height: 22px;
+  border: 1.5px solid var(--gold);
+  opacity: 0.85;
+}
+.corner-ornament::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.corner-ornament::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+/* Small 4-point star glyph reused in headings / dividers */
+.star-glyph {
+  display: inline-block;
+  width: 0.9em; height: 0.9em;
+  background: currentColor;
+  clip-path: polygon(50% 0%, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0% 50%, 38% 38%);
+}

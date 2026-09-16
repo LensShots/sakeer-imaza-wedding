@@ -1,0 +1,989 @@
+
+/* =========================================================
+   RSVP — PREMIUM CINEMATIC SECTION
+   ========================================================= */
+
+.rsvp-section {
+  position: relative;
+  min-height: 100svh;
+  width: 100%;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(185, 193, 157, .10),
+      transparent 38%
+    ),
+    linear-gradient(
+      155deg,
+      #0b1714 0%,
+      #14221d 48%,
+      #08110f 100%
+    );
+
+  color: #ead9b7;
+  isolation: isolate;
+}
+
+.rsvp-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  opacity: .035;
+
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.6) 0,
+      rgba(255,255,255,.6) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+}
+
+.rsvp-section__glow {
+  position: absolute;
+
+  width: 60vw;
+  height: 60vw;
+  max-width: 700px;
+  max-height: 700px;
+
+  border-radius: 50%;
+
+  background: rgba(185,193,157,.06);
+  filter: blur(110px);
+
+  pointer-events: none;
+}
+
+.rsvp-section__content {
+  position: relative;
+  z-index: 2;
+
+  width: min(90%, 570px);
+  padding: 75px 0;
+
+  text-align: center;
+}
+
+.rsvp-section__eyebrow {
+  margin: 0 0 14px;
+
+  font-family: "Marcellus", serif;
+  font-size: 9px;
+  letter-spacing: .38em;
+  text-transform: uppercase;
+
+  color: rgba(234,217,183,.52);
+}
+
+.rsvp-section__title {
+  margin: 0;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(68px, 11vw, 105px);
+  font-weight: 400;
+  line-height: .8;
+
+  color: #ead9b7;
+}
+
+.rsvp-section__ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+
+  width: min(250px, 60%);
+  margin: 28px auto 20px;
+}
+
+.rsvp-section__ornament span {
+  flex: 1;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201,166,92,.55)
+  );
+}
+
+.rsvp-section__ornament span:last-child {
+  background: linear-gradient(
+    90deg,
+    rgba(201,166,92,.55),
+    transparent
+  );
+}
+
+.rsvp-section__ornament i {
+  font-style: normal;
+  font-size: 12px;
+  color: #c9a65c;
+}
+
+.rsvp-section__intro {
+  width: min(100%, 430px);
+  margin: 0 auto 32px;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 18px;
+  line-height: 1.5;
+
+  color: rgba(234,217,183,.68);
+}
+
+/* =========================================================
+   RSVP CARD
+   ========================================================= */
+
+.rsvp-card {
+  position: relative;
+
+  width: 100%;
+  padding: 34px 32px;
+
+  border: 1px solid rgba(201,166,92,.28);
+
+  background: rgba(255,255,255,.025);
+
+  box-shadow:
+    0 35px 90px rgba(0,0,0,.3),
+    inset 0 0 70px rgba(185,193,157,.02);
+
+  backdrop-filter: blur(10px);
+
+  text-align: left;
+}
+
+.rsvp-card__corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+
+  border-color: rgba(201,166,92,.65);
+}
+
+.rsvp-card__corner--tl {
+  top: 9px;
+  left: 9px;
+
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+
+.rsvp-card__corner--br {
+  right: 9px;
+  bottom: 9px;
+
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+}
+
+/* fields */
+
+.rsvp-field {
+  margin-bottom: 24px;
+}
+
+.rsvp-field label {
+  display: block;
+  margin-bottom: 9px;
+
+  font-family: "Marcellus", serif;
+  font-size: 8px;
+  letter-spacing: .25em;
+
+  color: rgba(234,217,183,.5);
+}
+
+.rsvp-field label span {
+  margin-left: 5px;
+  font-size: 6px;
+  opacity: .55;
+}
+
+.rsvp-field input[type="text"],
+.rsvp-field select,
+.rsvp-field textarea {
+  width: 100%;
+
+  border: 0;
+  border-bottom: 1px solid rgba(201,166,92,.28);
+
+  border-radius: 0;
+
+  padding: 11px 2px;
+
+  outline: none;
+
+  background: transparent;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 17px;
+
+  color: #ead9b7;
+
+  transition: border-color .3s ease;
+}
+
+.rsvp-field textarea {
+  resize: vertical;
+  min-height: 75px;
+}
+
+.rsvp-field input::placeholder,
+.rsvp-field textarea::placeholder {
+  color: rgba(234,217,183,.3);
+}
+
+.rsvp-field input:focus,
+.rsvp-field select:focus,
+.rsvp-field textarea:focus {
+  border-color: rgba(201,166,92,.8);
+}
+
+/* select */
+
+.rsvp-field select {
+  cursor: pointer;
+  appearance: none;
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, #c9a65c 50%),
+    linear-gradient(135deg, #c9a65c 50%, transparent 50%);
+
+  background-position:
+    calc(100% - 8px) 50%,
+    calc(100% - 3px) 50%;
+
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.rsvp-field select option {
+  background: #10201b;
+  color: #ead9b7;
+}
+
+/* =========================================================
+   ATTENDANCE
+   ========================================================= */
+
+.rsvp-choice {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+.rsvp-choice__option {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 52px;
+  padding: 8px 12px;
+
+  border: 1px solid rgba(201,166,92,.18);
+
+  cursor: pointer;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 15px;
+
+  color: rgba(234,217,183,.65);
+
+  transition:
+    border-color .3s ease,
+    background .3s ease,
+    color .3s ease;
+}
+
+.rsvp-choice__option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rsvp-choice__option:has(input:checked) {
+  border-color: rgba(201,166,92,.75);
+  background: rgba(201,166,92,.07);
+  color: #ead9b7;
+}
+
+/* submit */
+
+.rsvp-submit {
+  width: 100%;
+  min-height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+
+  margin-top: 8px;
+
+  border: 1px solid rgba(201,166,92,.5);
+
+  background: rgba(201,166,92,.06);
+
+  cursor: pointer;
+
+  font-family: "Marcellus", serif;
+  font-size: 8px;
+  letter-spacing: .25em;
+
+  color: #ead9b7;
+
+  transition:
+    background .35s ease,
+    border-color .35s ease,
+    transform .35s ease;
+}
+
+.rsvp-submit b {
+  font-size: 15px;
+  font-weight: 400;
+  color: #c9a65c;
+}
+
+.rsvp-submit:hover {
+  background: rgba(201,166,92,.13);
+  border-color: rgba(201,166,92,.85);
+  transform: translateY(-2px);
+}
+
+.rsvp-success {
+  margin: 18px 0 0;
+
+  text-align: center;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 16px;
+
+  color: #c9a65c;
+}
+
+.rsvp-section__signature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+
+  margin-top: 35px;
+
+  font-family: "Marcellus", serif;
+  font-size: 7px;
+  letter-spacing: .25em;
+
+  color: rgba(234,217,183,.3);
+}
+
+.rsvp-section__signature strong {
+  font-family: "Tangerine", cursive;
+  font-size: 35px;
+  font-weight: 400;
+  letter-spacing: 0;
+
+  color: #c9a65c;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .rsvp-section__content {
+    width: min(90%, 470px);
+    padding: 60px 0;
+  }
+
+  .rsvp-section__title {
+    font-size: 72px;
+  }
+
+  .rsvp-section__intro {
+    font-size: 17px;
+    margin-bottom: 27px;
+  }
+
+  .rsvp-card {
+    padding: 28px 20px;
+  }
+
+  .rsvp-choice {
+    grid-template-columns: 1fr;
+  }
+
+  .rsvp-choice__option {
+    min-height: 48px;
+  }
+}
+
+@media (max-width: 380px) {
+
+  .rsvp-section__title {
+    font-size: 64px;
+  }
+
+  .rsvp-card {
+    padding: 25px 16px;
+  }
+}
+
+
+/* =========================================================
+   RSVP — WARM IVORY & ANTIQUE GOLD
+   Matches Venue design
+   ========================================================= */
+
+#rsvpSection {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  box-sizing: border-box;
+  background: #f5efe3;
+  color: #44352b;
+  overflow: hidden;
+  padding: 70px 20px 42px;
+}
+
+/* Soft paper texture */
+#rsvpSection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 5px,
+      rgba(120, 95, 65, 0.08) 5px,
+      rgba(120, 95, 65, 0.08) 6px
+    );
+}
+
+#rsvpSection .rsvp-section__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Top label */
+#rsvpSection .rsvp-section__eyebrow {
+  margin: 0 0 30px;
+  text-align: center;
+  font-family: "Marcellus", Georgia, serif;
+  font-size: 10px;
+  letter-spacing: 5px;
+  color: #a08358;
+}
+
+/* Ornament */
+#rsvpSection .rsvp-section__ornament {
+  margin: 0 auto 18px;
+  text-align: center;
+  font-size: 22px;
+  color: #b8945c;
+  line-height: 1;
+}
+
+/* Main heading */
+#rsvpSection .rsvp-section__title {
+  margin: 0;
+  text-align: center;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(64px, 16vw, 90px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -1px;
+  color: #44352b;
+}
+
+/* Subtitle */
+#rsvpSection .rsvp-section__subtitle {
+  margin: 20px auto 48px;
+  text-align: center;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 21px;
+  line-height: 1.35;
+  color: #765b40;
+}
+
+/* Form */
+#rsvpSection .rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 29px;
+}
+
+/* Fields */
+#rsvpSection .rsvp-field {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+/* Labels */
+#rsvpSection .rsvp-field > label,
+#rsvpSection .rsvp-field > legend {
+  display: block;
+  margin: 0 0 13px;
+  padding: 0;
+  font-family: "Marcellus", Georgia, serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #a08358;
+}
+
+/* Inputs and select */
+#rsvpSection .rsvp-field input[type="text"],
+#rsvpSection .rsvp-field select,
+#rsvpSection .rsvp-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 0;
+  border-bottom: 1px solid rgba(184, 148, 92, 0.6);
+  border-radius: 0;
+  outline: none;
+  background: transparent;
+  color: #44352b;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 12px 3px 13px;
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+#rsvpSection .rsvp-field input[type="text"]::placeholder,
+#rsvpSection .rsvp-field textarea::placeholder {
+  color: rgba(68, 53, 43, 0.55);
+  opacity: 1;
+}
+
+#rsvpSection .rsvp-field input[type="text"]:focus,
+#rsvpSection .rsvp-field select:focus,
+#rsvpSection .rsvp-field textarea:focus {
+  border-bottom-color: #b8945c;
+  background: rgba(184, 148, 92, 0.06);
+}
+
+/* Select */
+#rsvpSection .rsvp-field select {
+  appearance: auto;
+  cursor: pointer;
+}
+
+#rsvpSection .rsvp-field select option {
+  background: #f5efe3;
+  color: #44352b;
+}
+
+/* Textarea */
+#rsvpSection .rsvp-field textarea {
+  min-height: 74px;
+  resize: vertical;
+  line-height: 1.4;
+}
+
+/* Optional text */
+#rsvpSection .rsvp-field label span {
+  color: rgba(118, 91, 64, 0.7);
+  letter-spacing: 1px;
+  text-transform: lowercase;
+}
+
+/* Attendance box */
+#rsvpSection .rsvp-field:has(.rsvp-attendance) {
+  border: 1px solid rgba(184, 148, 92, 0.7);
+  padding: 22px 20px 19px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Attendance heading */
+#rsvpSection .rsvp-field:has(.rsvp-attendance) legend {
+  margin: 0 0 20px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 22px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #44352b;
+}
+
+/* Attendance choices */
+#rsvpSection .rsvp-attendance {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+#rsvpSection .rsvp-attendance label {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  cursor: pointer;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 19px;
+  color: #44352b;
+}
+
+/* Radio buttons */
+#rsvpSection .rsvp-attendance input[type="radio"] {
+  appearance: none;
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  margin: 0;
+  border: 1px solid #a08358;
+  border-radius: 50%;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+}
+
+#rsvpSection .rsvp-attendance input[type="radio"]:checked {
+  border-color: #b8945c;
+}
+
+#rsvpSection .rsvp-attendance input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: #b8945c;
+}
+
+/* Submit button */
+#rsvpSection .rsvp-submit {
+  width: 100%;
+  min-height: 58px;
+  margin-top: 8px;
+  border: 1px solid #b8945c;
+  border-radius: 0;
+  background: rgba(184, 148, 92, 0.08);
+  color: #44352b;
+  font-family: "Marcellus", Georgia, serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+#rsvpSection .rsvp-submit:hover {
+  background: #b8945c;
+  color: #fffaf0;
+}
+
+/* Status */
+#rsvpSection .rsvp-status {
+  min-height: 20px;
+  margin-top: -12px;
+  text-align: center;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 17px;
+  color: #765b40;
+}
+
+/* Signature */
+#rsvpSection .rsvp-section__signature {
+  margin-top: 44px;
+  text-align: center;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 13px;
+  letter-spacing: 5px;
+  color: rgba(160, 131, 88, 0.8);
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  #rsvpSection {
+    padding: 52px 25px 34px;
+  }
+
+  #rsvpSection .rsvp-section__eyebrow {
+    margin-bottom: 25px;
+    font-size: 9px;
+    letter-spacing: 4px;
+  }
+
+  #rsvpSection .rsvp-section__ornament {
+    margin-bottom: 16px;
+    font-size: 20px;
+  }
+
+  #rsvpSection .rsvp-section__title {
+    font-size: clamp(60px, 18vw, 78px);
+  }
+
+  #rsvpSection .rsvp-section__subtitle {
+    margin: 17px auto 38px;
+    font-size: 20px;
+  }
+
+  #rsvpSection .rsvp-form {
+    gap: 25px;
+  }
+
+  #rsvpSection .rsvp-field > label,
+  #rsvpSection .rsvp-field > legend {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+  }
+
+  #rsvpSection .rsvp-field input[type="text"],
+  #rsvpSection .rsvp-field select,
+  #rsvpSection .rsvp-field textarea {
+    font-size: 19px;
+  }
+
+  #rsvpSection .rsvp-field:has(.rsvp-attendance) {
+    padding: 20px 17px 18px;
+  }
+
+  #rsvpSection .rsvp-field:has(.rsvp-attendance) legend {
+    font-size: 21px;
+  }
+
+  #rsvpSection .rsvp-attendance label {
+    font-size: 18px;
+  }
+
+  #rsvpSection .rsvp-submit {
+    min-height: 56px;
+    font-size: 10px;
+    letter-spacing: 3.5px;
+  }
+
+  #rsvpSection .rsvp-section__signature {
+    margin-top: 35px;
+  }
+}
+
+
+/* =========================================================
+   RSVP — LIGHTWEIGHT BACKGROUND
+   ========================================================= */
+
+#rsvpSection {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  box-sizing: border-box;
+  background: #f5efe3;
+  color: #44352b;
+  overflow: hidden;
+  padding: 70px 20px 42px;
+}
+
+/* Keep RSVP content above background */
+#rsvpSection .rsvp-section__inner {
+  position: relative;
+  z-index: 2;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  #rsvpSection {
+    padding: 52px 25px 34px;
+    background-position: center top;
+  }
+}
+
+/* =========================================================
+   RSVP — FIX FAINT ATTENDANCE TEXT
+========================================================= */
+
+.rsvp-attendance {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+/* Make both options clearly visible */
+.rsvp-attendance label,
+.rsvp-attendance label span {
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: 23px !important;
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0.2px !important;
+
+  color: #5b4635 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  text-transform: none !important;
+  text-shadow: none !important;
+}
+
+/* Radio buttons */
+.rsvp-attendance input[type="radio"] {
+  width: 21px !important;
+  height: 21px !important;
+  accent-color: #b8945c !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Selected option */
+.rsvp-attendance input[type="radio"]:checked + span {
+  color: #8d6636 !important;
+  font-weight: 700 !important;
+}
+
+/* Make the fieldset text stronger too */
+.rsvp-field legend {
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: 25px !important;
+  font-weight: 600 !important;
+  color: #4d392b !important;
+  opacity: 1 !important;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .rsvp-attendance label,
+  .rsvp-attendance label span {
+    font-size: 22px !important;
+  }
+
+  .rsvp-field legend {
+    font-size: 24px !important;
+  }
+}
+
+/* =========================================================
+   RSVP — EMPTY VISIBLE NOTE BOX
+========================================================= */
+
+.rsvp-note-field {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  margin-top: 28px;
+}
+
+/* NOTE and optional text */
+.rsvp-note-field label {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+/* NOTE */
+.rsvp-note-label {
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  letter-spacing: 4px !important;
+  color: #76563b !important;
+  opacity: 1 !important;
+}
+
+/* optional */
+.rsvp-note-optional {
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.5px !important;
+  color: #b39a7e !important;
+  opacity: 1 !important;
+}
+
+/* Empty visible note box */
+#rsvpNote {
+  display: block !important;
+  position: relative;
+  z-index: 25;
+
+  width: 100% !important;
+  min-height: 125px !important;
+  box-sizing: border-box !important;
+
+  padding: 15px 16px !important;
+
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: 21px !important;
+  font-weight: 500 !important;
+  line-height: 1.45 !important;
+
+  color: #4d392b !important;
+
+  /* Opaque background hides anything behind the box */
+  background: #f8efdf !important;
+
+  border: 1px solid #b8945c !important;
+  border-radius: 0 !important;
+
+  outline: none !important;
+  resize: vertical !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Hint inside the empty box */
+#rsvpNote::placeholder {
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: 20px !important;
+  font-style: italic !important;
+  color: #a58a6d !important;
+  opacity: 1 !important;
+}
+
+/* Focus effect */
+#rsvpNote:focus {
+  border-color: #8d6636 !important;
+  background: #fff8eb !important;
+  box-shadow: 0 0 0 1px rgba(184, 148, 92, 0.25) !important;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .rsvp-note-label {
+    font-size: 16px !important;
+    letter-spacing: 3.5px !important;
+  }
+
+  .rsvp-note-optional {
+    font-size: 12px !important;
+  }
+
+  #rsvpNote {
+    min-height: 115px !important;
+    font-size: 20px !important;
+  }
+
+  #rsvpNote::placeholder {
+    font-size: 19px !important;
+  }
+}

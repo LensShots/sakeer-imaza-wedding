@@ -1,0 +1,141 @@
+/* ==========================================================================
+   BASE / RESET
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: var(--step-0);
+  line-height: 1.65;
+  color: var(--text-on-light);
+  background: var(--bg-light);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Body is locked while the envelope intro is showing */
+body.is-locked { overflow: hidden; height: 100vh; }
+
+img { max-width: 100%; display: block; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  margin: 0;
+  color: inherit;
+  letter-spacing: 0.01em;
+}
+
+p { margin: 0; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+input, select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* Visible keyboard focus everywhere — accessibility floor */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--emerald-deep);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- Shared layout primitives ------------------------------------------- */
+
+.section {
+  position: relative;
+  padding: var(--space-8) var(--edge-pad);
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.section--dark {
+  max-width: none;
+  background: linear-gradient(175deg, var(--emerald-deep), var(--emerald-mid));
+  color: var(--text-on-dark);
+}
+.section--dark > .section-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--step-0);
+  color: var(--gold);
+  margin-bottom: var(--space-2);
+}
+
+.section-title {
+  font-size: var(--step-3);
+  margin-bottom: var(--space-4);
+}
+
+.section--dark .section-title { color: var(--ivory); }
+
+.center { text-align: center; }
+
+.stack { display: flex; flex-direction: column; }
+
+/* =========================================================
+   REMOVE SECTION GAPS
+   ========================================================= */
+
+#mainContent {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#mainContent > section {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}

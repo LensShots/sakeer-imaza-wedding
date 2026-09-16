@@ -1,0 +1,409 @@
+/* =========================================
+   WALEEMA COUNTDOWN / VIDEO EXPERIENCE
+   ========================================= */
+
+#waleema-screen {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: #000 !important;
+  z-index: 9999 !important;
+  display: none !important;
+  visibility: hidden !important;
+}
+
+#waleema-screen.is-active {
+  display: block !important;
+  visibility: visible !important;
+}
+
+
+/* =========================================
+   VIDEO
+   ========================================= */
+
+#waleema-video {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  display: block;
+
+  z-index: 1;
+}
+
+
+/* =========================================
+   FINAL BACKGROUND
+   ========================================= */
+
+#waleema-after-video {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  opacity: 0;
+  visibility: hidden;
+
+  z-index: 2;
+
+  transition: opacity 0.8s ease;
+}
+
+#waleema-screen.video-finished #waleema-after-video {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* =========================================
+   WALEEMA ARTWORK
+   ========================================= */
+
+.waleema-artwork {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+
+  opacity: 0;
+  visibility: hidden;
+
+  z-index: 3;
+
+  pointer-events: none;
+
+  transition: opacity 0.6s ease;
+}
+
+.waleema-artwork.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  #waleema-screen {
+    height: 100dvh;
+  }
+
+}
+
+/* =========================================
+   SMOOTH WEDDING → WALEEMA FADE
+   ========================================= */
+
+#weddingPages {
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+#weddingPages.wedding-leaving {
+  opacity: 0;
+}
+
+#waleema-screen {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+#waleema-screen.is-active {
+  opacity: 1;
+}
+
+#waleema-screen.waleema-entering {
+  opacity: 0;
+}
+
+
+
+
+
+/* =========================================
+   WALEEMA VISIBILITY FIX
+========================================= */
+
+#waleema-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: #ead9c0;
+}
+
+/* Video */
+#waleema-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Final background image */
+#waleema-after-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease;
+}
+
+/* Artwork PNGs */
+.waleema-artwork {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 3;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 1s ease;
+}
+
+.waleema-artwork.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Show final image after video */
+#waleema-screen.video-finished #waleema-after-video {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
+
+
+/* =====================================================
+   WALEEMA VIDEO → JPG FADE IN
+   ===================================================== */
+
+#waleema-after-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 20;
+  transition: opacity 1.2s ease;
+}
+
+#waleema-after-video.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* =====================================================
+   WALEEMA COUNTDOWN FINAL VISIBILITY FIX
+   ===================================================== */
+
+#waleemaControls {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 100 !important;
+  pointer-events: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  padding-bottom: 30px !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.6s ease !important;
+}
+
+#waleemaControls.visible,
+#waleema-screen.controls-visible #waleemaControls {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#waleemaCountdown {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 6px !important;
+  width: 100% !important;
+  margin-bottom: 14px !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(12px) !important;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease !important;
+}
+
+#waleemaCountdown.visible,
+#waleema-screen.controls-visible #waleemaCountdown {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+#waleemaCountdown .waleema-time-box {
+  width: 54px !important;
+  min-width: 54px !important;
+  height: 60px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 3px !important;
+  border-radius: 4px !important;
+  background: rgba(55, 35, 22, 0.78) !important;
+  color: #ffffff !important;
+  box-sizing: border-box !important;
+}
+
+#waleemaCountdown .waleema-time-box span {
+  display: block !important;
+  color: #ffffff !important;
+  font-family: Georgia, serif !important;
+  font-size: 22px !important;
+  line-height: 1 !important;
+  font-weight: 400 !important;
+}
+
+#waleemaCountdown .waleema-time-box small {
+  display: block !important;
+  color: #ffffff !important;
+  font-family: Georgia, serif !important;
+  font-size: 7px !important;
+  line-height: 1 !important;
+  letter-spacing: 0.5px !important;
+}
+
+#waleemaNavigation {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  padding: 0 12px !important;
+  box-sizing: border-box !important;
+  pointer-events: auto !important;
+}
+
+#waleemaNavigation button {
+  pointer-events: auto !important;
+}
+
+@media (max-width: 600px) {
+  #waleemaControls {
+    padding-bottom: 22px !important;
+  }
+
+  #waleemaCountdown {
+    gap: 4px !important;
+    margin-bottom: 10px !important;
+  }
+
+  #waleemaCountdown .waleema-time-box {
+    width: 46px !important;
+    min-width: 46px !important;
+    height: 53px !important;
+  }
+
+  #waleemaCountdown .waleema-time-box span {
+    font-size: 19px !important;
+  }
+
+  #waleemaCountdown .waleema-time-box small {
+    font-size: 6px !important;
+  }
+}
+
+/* =====================================================
+   WALEEMA → WEDDING FADE TRANSITION
+   ===================================================== */
+
+#waleema-screen,
+#weddingPages {
+  transition:
+    opacity 0.9s ease,
+    visibility 0.9s ease;
+}
+
+#waleema-screen.is-leaving {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+#weddingPages.is-returning {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Waleema previous button fade */
+
+#waleema-screen {
+  transition: opacity 0.9s ease, visibility 0.9s ease;
+}
+
+#waleema-screen.is-leaving {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+#waleema-screen.is-leaving {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* =====================================================
+   WALEEMA BUTTONS — MATCH WEDDING BUTTONS
+   ===================================================== */
+
+/* WALEEMA NAVIGATION — TRANSPARENT BUTTONS */
+
+/* WALEEMA NAVIGATION — TRANSPARENT LIGHT BUTTONS */
+
+#waleemaNavigation button {
+  background: transparent !important;
+  color: #fff8e8 !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35) !important;
+}
+
+#waleemaNavigation button:hover {
+  background: transparent !important;
+  color: #fff8e8 !important;
+  transform: none !important;
+}

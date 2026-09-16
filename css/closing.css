@@ -1,0 +1,481 @@
+
+/* =========================================================
+   FINAL CLOSING — PREMIUM CINEMATIC END
+   ========================================================= */
+
+.closing-section {
+  position: relative;
+
+  width: 100%;
+  min-height: 100svh;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(185, 193, 157, 0.10),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 15% 85%,
+      rgba(201, 166, 92, 0.05),
+      transparent 30%
+    ),
+    linear-gradient(
+      150deg,
+      #07110e 0%,
+      #10201b 48%,
+      #07100d 100%
+    );
+
+  color: #ead9b7;
+
+  isolation: isolate;
+}
+
+/* =========================================================
+   SUBTLE FILM / PAPER TEXTURE
+   ========================================================= */
+
+.closing-section::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.035;
+
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.6) 0,
+      rgba(255,255,255,.6) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+}
+
+/* =========================================================
+   AMBIENT LIGHT
+   ========================================================= */
+
+.closing-section__ambient {
+  position: absolute;
+
+  width: 55vw;
+  height: 55vw;
+
+  max-width: 700px;
+  max-height: 700px;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter: blur(110px);
+
+  opacity: .55;
+}
+
+.closing-section__ambient--one {
+  top: -30%;
+  right: -20%;
+
+  background: rgba(185,193,157,.06);
+}
+
+.closing-section__ambient--two {
+  bottom: -35%;
+  left: -25%;
+
+  background: rgba(201,166,92,.045);
+}
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.closing-section__content {
+  position: relative;
+  z-index: 2;
+
+  width: min(90%, 620px);
+
+  padding: 90px 0;
+
+  text-align: center;
+}
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.closing-section__eyebrow {
+  margin: 0 0 25px;
+
+  font-family: "Marcellus", serif;
+
+  font-size: 8px;
+
+  letter-spacing: .42em;
+
+  text-transform: uppercase;
+
+  color: rgba(234,217,183,.50);
+}
+
+/* =========================================================
+   MONOGRAM
+   ========================================================= */
+
+.closing-section__monogram {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin: 0 auto;
+}
+
+.closing-section__monogram span {
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: clamp(85px, 14vw, 125px);
+
+  font-weight: 300;
+
+  line-height: .75;
+
+  color: #ead9b7;
+
+  text-shadow:
+    0 0 35px rgba(201,166,92,.08);
+}
+
+.closing-section__monogram i {
+  font-family: "Tangerine", cursive;
+
+  font-size: clamp(55px, 8vw, 75px);
+
+  font-style: normal;
+
+  line-height: 1;
+
+  color: #c9a65c;
+}
+
+/* =========================================================
+   ORNAMENT
+   ========================================================= */
+
+.closing-section__ornament {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 15px;
+
+  width: min(280px, 65%);
+
+  margin: 34px auto 22px;
+}
+
+.closing-section__ornament span {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(201,166,92,.55)
+    );
+}
+
+.closing-section__ornament span:last-child {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(201,166,92,.55),
+      transparent
+    );
+}
+
+.closing-section__ornament i {
+  font-style: normal;
+
+  font-size: 11px;
+
+  color: #c9a65c;
+}
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.closing-section__title {
+  margin: 0;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: clamp(55px, 9vw, 82px);
+
+  font-weight: 400;
+
+  line-height: .9;
+
+  letter-spacing: -.025em;
+
+  color: #ead9b7;
+}
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+.closing-section__message {
+  width: min(100%, 430px);
+
+  margin: 25px auto 0;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: 19px;
+
+  line-height: 1.55;
+
+  color: rgba(234,217,183,.68);
+}
+
+.closing-section__message--small {
+  margin-top: 9px;
+
+  font-size: 16px;
+
+  color: rgba(234,217,183,.43);
+}
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.closing-section__date {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  width: min(240px, 55%);
+
+  margin: 38px auto 0;
+}
+
+.closing-section__date span {
+  flex: 1;
+
+  height: 1px;
+
+  background: rgba(201,166,92,.25);
+}
+
+.closing-section__date strong {
+  font-family: "Marcellus", serif;
+
+  font-size: 8px;
+
+  font-weight: 400;
+
+  letter-spacing: .35em;
+
+  color: rgba(234,217,183,.52);
+}
+
+/* =========================================================
+   SIGNATURE
+   ========================================================= */
+
+.closing-section__signature {
+  margin: 38px 0 0;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: 15px;
+
+  line-height: 1.35;
+
+  color: rgba(234,217,183,.48);
+}
+
+.closing-section__signature em {
+  display: inline-block;
+
+  margin-top: 3px;
+
+  font-family: "Tangerine", cursive;
+
+  font-size: 46px;
+
+  font-style: normal;
+
+  line-height: .8;
+
+  color: #c9a65c;
+}
+
+/* =========================================================
+   BOTTOM LINE
+   ========================================================= */
+
+.closing-section__bottom {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 15px;
+
+  margin-top: 55px;
+
+  font-family: "Marcellus", serif;
+
+  font-size: 6px;
+
+  letter-spacing: .30em;
+
+  color: rgba(234,217,183,.25);
+}
+
+.closing-section__bottom b {
+  font-size: 8px;
+
+  font-weight: 400;
+
+  color: rgba(201,166,92,.55);
+}
+
+/* =========================================================
+   DECORATIVE ORNAMENTS
+   ========================================================= */
+
+.closing-section__leaf {
+  position: absolute;
+
+  z-index: 1;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 80px;
+
+  line-height: 1;
+
+  color: rgba(201,166,92,.12);
+
+  pointer-events: none;
+}
+
+.closing-section__leaf--top {
+  top: 35px;
+  left: 50%;
+
+  transform:
+    translateX(-50%)
+    rotate(180deg);
+}
+
+.closing-section__leaf--bottom {
+  bottom: 25px;
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .closing-section__content {
+    width: min(88%, 480px);
+
+    padding: 70px 0;
+  }
+
+  .closing-section__eyebrow {
+    font-size: 7px;
+
+    letter-spacing: .32em;
+
+    margin-bottom: 22px;
+  }
+
+  .closing-section__monogram {
+    gap: 9px;
+  }
+
+  .closing-section__title {
+    font-size: 62px;
+  }
+
+  .closing-section__message {
+    font-size: 17px;
+  }
+
+  .closing-section__message--small {
+    font-size: 15px;
+  }
+
+  .closing-section__bottom {
+    margin-top: 45px;
+
+    gap: 10px;
+  }
+
+  .closing-section__leaf {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 380px) {
+
+  .closing-section__content {
+    padding: 55px 0;
+  }
+
+  .closing-section__monogram span {
+    font-size: 80px;
+  }
+
+  .closing-section__monogram i {
+    font-size: 50px;
+  }
+
+  .closing-section__title {
+    font-size: 55px;
+  }
+
+  .closing-section__message {
+    font-size: 16px;
+  }
+
+  .closing-section__signature {
+    margin-top: 30px;
+  }
+
+  .closing-section__bottom {
+    margin-top: 35px;
+  }
+}

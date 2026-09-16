@@ -1,0 +1,34 @@
+/* ==========================================================================
+   RESPONSIVE REFINEMENTS
+   Base styles throughout the other files are mobile-first (this is a
+   mobile-first invitation experience). These rules only adjust spacing,
+   grid density, and type scale for larger viewports.
+   ========================================================================== */
+
+@media (min-width: 560px) {
+  .attend-toggle { max-width: 320px; margin-inline: auto; }
+  .footer__contacts { gap: var(--space-6); }
+}
+
+@media (min-width: 720px) {
+  :root { --edge-pad: clamp(2rem, 4vw, 3rem); }
+
+  .gallery { grid-template-columns: repeat(3, 1fr); }
+  .gallery__item:nth-child(3n+1) { grid-column: span 1; aspect-ratio: 3/4; }
+
+  .events { flex-direction: row; }
+  .event-card { flex: 1; }
+
+  .venue-map { aspect-ratio: 16 / 8; }
+}
+
+@media (min-width: 960px) {
+  .section { padding-top: var(--space-8); padding-bottom: var(--space-8); }
+  .hero__names { font-size: clamp(4.5rem, 3rem + 4vw, 7.5rem); }
+}
+
+/* Landscape phones: shrink the envelope + intro so it never overflows height */
+@media (max-height: 480px) and (orientation: landscape) {
+  .envelope { width: min(50vw, 300px); }
+  .envelope-screen__prelude { top: 6%; font-size: var(--step--1); }
+}

@@ -1,0 +1,783 @@
+/* =========================================================
+   MEHENDI EVENT PAGE
+   Premium full-screen video + PNG artwork
+   ========================================================= */
+
+.mehandi-page {
+  position: fixed;
+  inset: 0;
+
+  width: 100%;
+  height: 100svh;
+  min-height: 100svh;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+
+  background: #000;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  z-index: 1000;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   VIDEO BACKGROUND
+   ========================================================= */
+
+.mehandi-page__video {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center center;
+
+  display: block;
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   SOFT VIDEO OVERLAY
+   ========================================================= */
+
+.mehandi-page__overlay {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.08);
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   PNG ARTWORK CANVAS
+   ========================================================= */
+
+.mehandi-page__canvas {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+
+  z-index: 3;
+
+  pointer-events: none;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MEHENDI PNG LAYERS
+   ========================================================= */
+
+.mehandi-layer {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  display: block;
+
+  object-fit: fill;
+
+  pointer-events: none;
+
+  user-select: none;
+  -webkit-user-drag: none;
+
+  transform: none;
+}
+
+
+/* BACK LAYER */
+
+.mehandi-layer--01 {
+  z-index: 1;
+}
+
+
+/* FRONT LAYER */
+
+.mehandi-layer--03 {
+  z-index: 3;
+}
+
+
+/* =========================================================
+   OPEN / SHOW MEHENDI PAGE
+   ========================================================= */
+
+.mehandi-page.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  animation:
+    mehandiPageReveal 0.9s
+    cubic-bezier(0.22, 0.61, 0.36, 1)
+    both;
+}
+
+
+/* =========================================================
+   SMOOTH PAGE REVEAL
+   ========================================================= */
+
+@keyframes mehandiPageReveal {
+
+  0% {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+}
+
+
+/* =========================================================
+   VIDEO FADE
+   ========================================================= */
+
+.mehandi-page.is-active .mehandi-page__video {
+  animation:
+    mehandiVideoReveal 1.2s ease-out both;
+}
+
+
+@keyframes mehandiVideoReveal {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+/* =========================================================
+   ARTWORK FADE
+   ========================================================= */
+
+.mehandi-page.is-active .mehandi-page__canvas {
+  animation:
+    mehandiArtworkReveal 1.1s ease-out 0.15s both;
+}
+
+
+@keyframes mehandiArtworkReveal {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+/* =========================================================
+   MEHENDI NAVIGATION
+   Same overall placement as Wedding page
+   ========================================================= */
+
+#mehandiPage .mehandi-page__navigation {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 28px;
+
+  width: 100%;
+  height: 72px;
+
+  margin: 0;
+  padding: 0 10px;
+
+  display: grid;
+
+  grid-template-columns: 1fr auto 1fr;
+
+  align-items: center;
+
+  box-sizing: border-box;
+
+  z-index: 100;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   MEHENDI COUNTDOWN
+   DO NOT CHANGE THE COUNTDOWN DESIGN
+   ========================================================= */
+
+#mehandiPage .mehandi-countdown {
+  position: relative;
+
+  grid-column: 2;
+
+  display: flex;
+
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  width: auto;
+  height: auto;
+
+  margin: 0;
+  padding: 0;
+
+  background: transparent;
+
+  border: 0;
+
+  box-shadow: none;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+
+  z-index: 102;
+}
+
+
+/* =========================================================
+   COUNTDOWN BOX
+   ========================================================= */
+
+#mehandiPage .mehandi-countdown__box {
+  position: relative;
+
+  width: 58px;
+  height: 60px;
+
+  flex: 0 0 58px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  margin: 0;
+  padding: 0;
+
+  background: rgba(20, 55, 44, 0.18);
+
+  border: 1px solid rgba(245, 221, 168, 0.85);
+
+  border-radius: 4px;
+
+  color: #fff;
+
+  text-align: center;
+
+  opacity: 1;
+  visibility: visible;
+
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  z-index: 103;
+}
+
+
+/* =========================================================
+   COUNTDOWN NUMBER
+   ========================================================= */
+
+#mehandiPage .mehandi-countdown__box span {
+  display: block;
+
+  width: auto;
+  height: auto;
+
+  margin: 0;
+  padding: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 23px;
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  color: #fff;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   COUNTDOWN LABEL
+   ========================================================= */
+
+#mehandiPage .mehandi-countdown__box small {
+  display: block;
+
+  width: auto;
+  height: auto;
+
+  margin: 6px 0 0;
+  padding: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 6px;
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: .08em;
+
+  color: #fff;
+
+  white-space: nowrap;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   PREVIOUS / NEXT BUTTONS
+   MATCH WEDDING PAGE SIZE + PLACEMENT
+   ========================================================= */
+
+#mehandiPage .mehandi-page__nav {
+  position: relative;
+
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 3px;
+
+  margin: 0;
+  padding: 7px 3px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #fff;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 13px;
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  pointer-events: auto;
+
+  text-shadow:
+    0 1px 4px rgba(45, 30, 15, .75);
+
+  -webkit-tap-highlight-color: transparent;
+
+  z-index: 105;
+}
+
+
+/* =========================================================
+   PREVIOUS — LEFT
+   ========================================================= */
+
+#mehandiPage .mehandi-page__nav--previous {
+  grid-column: 1;
+
+  justify-self: start;
+}
+
+
+/* =========================================================
+   NEXT — RIGHT
+   ========================================================= */
+
+#mehandiPage .mehandi-page__nav--next {
+  grid-column: 3;
+
+  justify-self: end;
+}
+
+
+/* =========================================================
+   ARROWS
+   ========================================================= */
+
+#mehandiPage .mehandi-page__arrow {
+  font-size: 18px;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   BUTTON INTERACTION
+   ========================================================= */
+
+#mehandiPage .mehandi-page__nav:hover {
+  opacity: .9;
+}
+
+#mehandiPage .mehandi-page__nav:active {
+  transform: scale(.96);
+}
+
+#mehandiPage .mehandi-page__nav:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, .8);
+
+  outline-offset: 4px;
+}
+
+
+/* =========================================================
+   MEHENDI HINT
+   SLIGHTLY ABOVE THE PREVIOUS POSITION
+   ========================================================= */
+
+#mehandiPage .mehandi-page__hint {
+  position: absolute !important;
+
+  left: 50% !important;
+
+  /*
+     HINT MOVED SLIGHTLY ABOVE
+     Previous: 10px on mobile
+     New: 18px
+  */
+
+  bottom: 25px !important;
+
+  transform: translateX(-50%) !important;
+
+  z-index: 104 !important;
+
+  color: #ffffff !important;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif !important;
+
+  font-size: 13px !important;
+
+  font-weight: 400 !important;
+
+  letter-spacing: 1.2px !important;
+
+  line-height: 1 !important;
+
+  white-space: nowrap !important;
+
+  text-align: center !important;
+
+  pointer-events: none !important;
+
+  text-shadow:
+    0 0 4px rgba(255, 255, 255, .95),
+    0 0 9px rgba(255, 225, 165, .85),
+    0 0 18px rgba(255, 205, 120, .65) !important;
+
+  animation:
+    mehandiHintGlow 2.4s ease-in-out infinite !important;
+}
+
+
+/* =========================================================
+   HINT GLOW
+   ========================================================= */
+
+@keyframes mehandiHintGlow {
+
+  0%,
+  100% {
+
+    opacity: .72;
+
+    text-shadow:
+      0 0 3px rgba(255, 255, 255, .8),
+      0 0 8px rgba(255, 225, 165, .55),
+      0 0 14px rgba(255, 205, 120, .4);
+  }
+
+  50% {
+
+    opacity: 1;
+
+    text-shadow:
+      0 0 5px rgba(255, 255, 255, 1),
+      0 0 12px rgba(255, 225, 165, .95),
+      0 0 24px rgba(255, 205, 120, .8);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  #mehandiPage .mehandi-page__navigation {
+    bottom: 18px;
+
+    height: 68px;
+
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+
+
+  /* Countdown stays the same */
+
+  #mehandiPage .mehandi-countdown {
+    gap: 4px;
+  }
+
+  #mehandiPage .mehandi-countdown__box {
+    width: 54px;
+    height: 58px;
+
+    flex-basis: 54px;
+  }
+
+  #mehandiPage .mehandi-countdown__box span {
+    font-size: 21px;
+  }
+
+  #mehandiPage .mehandi-countdown__box small {
+    font-size: 6px;
+
+    margin-top: 5px;
+  }
+
+
+  /* Buttons */
+
+  #mehandiPage .mehandi-page__nav {
+    font-size: 11px;
+  }
+
+  #mehandiPage .mehandi-page__arrow {
+    font-size: 18px;
+  }
+
+
+  /* Hint slightly above */
+
+  #mehandiPage .mehandi-page__hint {
+    bottom: 25px !important;
+
+    font-size: 11px !important;
+
+    letter-spacing: .9px !important;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  #mehandiPage .mehandi-page__navigation {
+    bottom: 17px;
+
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+
+  #mehandiPage .mehandi-countdown {
+    gap: 3px;
+  }
+
+
+  #mehandiPage .mehandi-countdown__box {
+    width: 50px;
+    height: 52px;
+
+    flex-basis: 50px;
+  }
+
+
+  #mehandiPage .mehandi-countdown__box span {
+    font-size: 19px;
+  }
+
+
+  #mehandiPage .mehandi-countdown__box small {
+    font-size: 5px;
+  }
+
+
+  #mehandiPage .mehandi-page__nav {
+    font-size: 10px;
+  }
+
+
+  #mehandiPage .mehandi-page__arrow {
+    font-size: 18px;
+  }
+
+
+  #mehandiPage .mehandi-page__hint {
+    bottom: 25px !important;
+
+    font-size: 10px !important;
+
+    letter-spacing: .7px !important;
+  }
+
+  /* =========================================================
+   FINAL MEHENDI HINT POSITION
+   ========================================================= */
+
+#mehandiPage .mehandi-page__hint {
+  transform: translate(-50%, -20px) !important;
+}
+
+/* =========================================================
+   MEHENDI HINT — FORCE SLIGHTLY HIGHER
+   ========================================================= */
+
+#mehandiPage .mehandi-page__hint {
+  position: fixed !important;
+
+  left: 50% !important;
+  bottom: 35px !important;
+
+  top: auto !important;
+
+  transform: translateX(-50%) !important;
+
+  z-index: 999 !important;
+}
+
+/* =========================================================
+   MEHENDI → WEDDING
+   SMOOTH FADE TRANSITION
+   ========================================================= */
+
+#mehandiPage.mehandi-leaving {
+  animation: mehandiFadeOut 0.8s ease forwards !important;
+}
+
+#weddingPages.wedding-entering {
+  display: block !important;
+  opacity: 0 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+
+  animation: weddingFadeIn 1.1s ease forwards !important;
+}
+
+
+/* Mehendi fades away */
+
+@keyframes mehandiFadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+
+/* Wedding fades in */
+
+@keyframes weddingFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+}
