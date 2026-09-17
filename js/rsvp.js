@@ -136,7 +136,7 @@ const RSVP = {
   rsvpForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    const whatsappNumber = "94767778115";
+    const whatsappNumber = "94714195974";
 
     const name = document.getElementById("rsvpName").value.trim();
 
