@@ -10,7 +10,7 @@ const MehandiPage = {
      CHANGE THIS LATER TO THE REAL MEHENDI DATE/TIME
      ======================================================= */
 
-  targetDate: new Date("2026-09-23T17:31:00").getTime(),
+  targetDate: new Date("2026-09-22T18:30:00").getTime(),
 
 
   /* =======================================================
