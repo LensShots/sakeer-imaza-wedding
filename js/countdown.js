@@ -4,7 +4,7 @@
 
 const WeddingPageCountdown = {
   // CHANGE THIS DATE/TIME TO YOUR WEDDING DATE
-  targetDate: new Date("2026-09-25T12:00:00").getTime(),
+  targetDate: new Date("2026-09-23T16:00:00"),
 
   init() {
     this.days = document.getElementById("pageCountdownDays");

@@ -1,6 +1,7 @@
 /* ==========================================================================
    WEDDING_CONFIG
-   ----------------------------------------------------------------------
+   ---------------------------------------------
+   -------------------------
    Every piece of text, date, and link on the site is driven from this
    single object. To re-use this template for a new couple, this is the
    ONLY file you should need to edit.
@@ -13,9 +14,9 @@ const WEDDING_CONFIG = {
 
   // ---- Couple -------------------------------------------------------------
   couple: {
-  partnerA: "Aasir",
-  partnerB: "Sahra",
-  monogram: "A & S",
+  partnerA: "Sakeer",
+  partnerB: "Imaza",
+  monogram: "S & I",
   tagline: "Two hearts, one blessing",
 },
 
@@ -56,16 +57,16 @@ const WEDDING_CONFIG = {
   ],
 
   // ---- Venue (for the map + directions section) -----------------------------
-  venue: {
-    name: "Crescent Gardens",
-    address: "142 Galle Road, Colombo 03, Sri Lanka",
-    // Any standard Google Maps embed / share URL works here.
-    mapEmbedUrl:
-  "https://maps.google.com/maps?q=7.914577124930316,81.52199257874379&z=18&output=embed",
+venue: {
+  name: "Mihraj Wedding and Conference Hall",
+  address: "Mihraj Wedding and Conference Hall, Sri Lanka",
 
-mapLinkUrl:
-  "https://maps.app.goo.gl/GcAbZVYttypcwRim6",
-  },
+  mapEmbedUrl:
+    "https://www.google.com/maps?q=7.9263029,81.5254123&z=18&output=embed",
+
+  mapLinkUrl:
+    "https://maps.app.goo.gl/8G4sQ3G9URK2p33F6",
+},
 
   // ---- Gallery ----------------------------------------------------------------
   // Replace `src` with real photo paths (e.g. "assets/gallery/01.jpg").
