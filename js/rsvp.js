@@ -172,7 +172,7 @@ const RSVP = {
 
     const message =
   "💍✨ WEDDING RSVP ✨💍\n\n" +
-  "Dear Aasir & Sahra 🤍\n\n" +
+  "Dear Sakeer & Imaza 🤍\n\n" +
   "👤 Name: " + name + "\n" +
   "💌 Attendance: " + attendanceText + "\n" +
   "👥 Guests: " + guestText + "\n" +
